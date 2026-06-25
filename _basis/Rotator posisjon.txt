@@ -1,0 +1,45 @@
+Hvordan tilpasses rotatorbildene til høyden?
+
+I oppsettet deres brukes bakgrunnsbilder på hero (ikke <img>). Da styrer CSS alt. Typisk er:
+
+.hero.hero-rotator,
+.hero.hero-rotator::before,
+.hero.hero-rotator::after {
+  background-size: cover;      /* fyll hele flaten, beskjær om nødvendig */
+  background-position: center; /* midtstill motivet */
+  background-repeat: no-repeat;
+}
+
+
+background-size: cover gjør at bildet alltid dekker hele hero-området (ingen “letterbox”), men kan beskjære i kantene.
+
+background-position: center gjør at beskjæringen skjer jevnt rundt midten (ikke tilfeldig).
+
+Hvis du vil flytte “fokuset” (f.eks. løfte motivet litt opp så ikke baugen kuttes), kan du overstyre per side/element med en CSS-variabel:
+
+/* i app.css */
+.hero.hero-rotator,
+.hero.hero-rotator::before,
+.hero.hero-rotator::after {
+  background-position: var(--hero-pos, center); /* center som default */
+  background-size: cover;
+}
+
+
+Så kan du i HTML sette posisjon for akkurat den siden/heroen:
+
+<section class="hero hero-rotator"
+         style="--hero-pos: center 30%; --hero-a: url('/assets/img/hero1.jpg'); --hero-b: url('/assets/img/hero2.jpg');"
+         data-images='["/assets/img/hero1.jpg","/assets/img/hero2.jpg",...]'>
+  ...
+</section>
+
+
+center 30% betyr “midt på X-aksen, litt høyere på Y-aksen”.
+
+Høyde på hero-båndet styres uavhengig (ikke av bildene). Typisk noe sånt:
+
+.hero { min-height: clamp(280px, 45vh, 560px); }
+
+
+Juster etter smak.

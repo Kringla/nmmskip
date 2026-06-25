@@ -1,0 +1,32 @@
+#Søkedefinisjon 'fart_soknat.php'
+I en form skal en først velge nasjon (fra tblzNasjon), deretter utføre fritekstsøk på fartøynavn som finnes i nasjonen som er satt.
+Default skal være søk i alle nasjoner. Deretter skal en kunne velge å se detaljene i det fartøyet i resultatlistingen en velger.
+
+Felt				Beskrivelse							Eksempel
+Template ID			Unik kode for søket					S1-Fartøy
+Navn				Lesbart navn						“Finn fartøy”
+Hensikt				Kort forklaring						“Finne navngitte fartøy”
+Step				Trinn i utviklingsplan				2
+Input-felt			Liste med underfelter				Se under
+Resultat-kolonner	Liste med kolonner som skal vises	Se under
+Paging				Ja/Nei, side-størrelse				Ja, 20 per side
+Standard sortering	Tabell.kolonne + retning			tblFartNavn.Navn ASC
+Rad-handling		Hva skjer ved klikk/dobbeltklikk	“goto detail.php?id=?id”
+
+Struktur for “Input-felt”
+Feltnavn	Etikett					Type			Kilde (tabell.kolonne)	Operator	Default		Valgliste (statisk/el. SQL)
+navn_frag	“Søk på del av navn”	tekstfelt		tblFartNavn.Navn		LIKE		“”			—
+nasjon		“Nasjon”				dropdown		tblNasjoner.Id			=			NULL		SQL: SELECT Id, Navn FROM tblNasjoner
+
+Struktur for “Resultat-kolonner”
+Kilde					Etikett		Bredde	Justering	Formatering
+tblFartNavn.Type		“Type”		50px	midt	—
+tblFartNavn.Navn		“Navn”		200px	venstre	link til detalj
+tblzFartType.TypeFork
+tblFartNavn.FartNavn
+tblFartTid.RegHavn		“Reg havn”
+tblzNasjon.Nasjon		“Flaggstat”
+tblFartObj.Bygget		“Bygget”
+tblFartTid.Kallesignal	“C/S”
+tblFartTid.Rederi		“Rederi”
+Screen1.png ILLUSTRERER utlisting ettere søk, og Screen2.png detaljene etter å ha valgt fartøy i Screen1. NB! Dette er illustrasjon, ikke eksakte krav.

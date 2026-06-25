@@ -1,0 +1,75 @@
+# Prosjekt Krav Dokument (PReqD)
+
+Prosjektets navn er SKIPSWEB
+
+## PROSJEKTMÅL:
+Det skal utvikles et web-basert brukergrensesnitt (GUI) for en MySQL database som heter SkipDB (DB).
+
+## OVERORDNETE KRAV:
+GUI skal kunne brukes i alle vanlig forekommende browsere som Edge, Chrome, Opera o.l.
+GUI skal kunne brukes av to forskjellige brukergrupper, administratorer (admin) og brukere (user), opptil 3 samtidige.
+Det skal opprettes adgangskontroll med e-post/passord i egen tabell i DB.
+admin skal kunne SØKE i, LESE, ENDRE, SLETTE og LEGGE til data i DB.
+user skal kun kunne SØKE i og LESE data i DB.
+admin skal i tillegg kunne legge til og slette user.
+Enkelhet i kode og visuelt inntrykk er viktig.
+
+## DATABASENS INNHOLD:
+Databasen inneholder opplysninger om fartøyer, fra hver enkelt fartøy ble bygd inntil det utgår av listene/"dør".
+Forståelsen av et fartøys liv er essensielt for å lage et GUI som kan benyttes i praksis. Det følgende er essensielle sammenhenger (relevante tabeller/felt i parantes):
+Et fartøy oppstår på et verft. Denne første utgaven av et fartøy kalles et 'fartøysobjekt'. I løpet av sitt livsløp som fartøy kan det skifte navn, eier, bli forlenget, ombygges til andre funksjoner, registreringssted og nasjon. Når registreringssted endres kan også nasjonalitet endres. Når nasjonalitet  endres, endres også kjenningssignal (også kalt kallesignal) og mmsi-kode.
+Ved kontrahering av en kjøper (reder/eier) ved et verft gis fartøyet et navn og, i nyere tid, tildeles fartøyet et unikt IMO-nummer som følger fartøyet gjennom livet. Når IMO-nummer ikke er tildelt er fartøyet unikt definert ved enten byggende verft og dets byggenummer, eller byggende verft, år/mnd bygd og navn gitt ved bygging. Noen ganger bygges skroget ved et annet verft enn byggeverftet. Etter kontrahering skjer kjølstrekking, sjøsetting, ferdig bygget, og leveranse. Det er tabellen tblFartObj som inneholder disse dataene.
+Tabellen tblFartSpes inneholder alle tekniske data om fartøyet. For nybygg gis feltet 'objekt' verdien 1 i raden som definerer nybygget.
+Tabellen tblFartTid gir tidslinjen for fartøyet. Tabellen inneholder:
+- alle navn hvert fartøy har gjennom sitt liv med dato for navnegivelse
+- alle eiere hvert fartøy har gjennom sitt liv med dato for eierendring
+- alle registreringshavner hvert fartøy har gjennom sitt liv med dato for endret havn
+- alle nasjonsendringer hvert fartøy har gjennom sitt liv med dato for endring.
+- alle ombygninger som medfører endringer av spesifikasjonen hvert fartøy har gjennom sitt liv med dato for endring.
+
+## RESSURSBRUK:
+Jeg er leder av utviklingen, men koder ikke selv.
+Du er min rådgiver og gir anbefalinger om utviklingsprosessen.
+Du er den som utvikler koden som er nødvendig for at prosjektets mål blir nådd.
+
+## RESSURSRAMMEBETINGELSER:
+DB ligger på et Webhotell. Webhotellet har MySQL ver 8.3.28 og støtter Cron.
+Jeg har en MSc i "Design of Information Systems" fra 1980. Jeg har utviklet applikajoner i og kan lese VBA kode. Jeg har god erfaring med design av Relasjonsdatabaser.
+* Jeg har tilgjengelig VB Studio Code, Notebook++, Access, phpMySQL ver 5.2.2, MySQL Workbench ver 8.0 CE og Laragon
+DB har et Schema som angitt i vedlagt "SkipsWeb.sql" fil.
+Du kan få adgang til Webhotell, MySQL og min OneDrive ev. Dropbox eller Google Drive.
+
+## ARBEIDSPROSESS:
+Arbeidet skal utføres i henhold til en trinnvis utviklingsplan.
+Du kommer med forslag og spørsmål, jeg svarer.
+
+## TRINNVIS UTVIKLINGSPLAN:
+### TRINN 1 – Oppsett og grunnstruktur
+Mål: Etablere grunnlaget for utvikling, inkludert tilgangskontroll.
+Backend: PHP 8.3.x (fordi det støttes av webhotellet)
+Database: MySQL 8.3.28 (eksisterende)
+Frontend: HTML, CSS (enkelt), og litt JavaScript (validering, interaktivitet)
+Autentisering: users-tabell med feltene user_id, email, password, role (admin eller user), isactive, created_at, lastused
+Påloggingsside (login.php) og utlogging
+Sesjonsstyring for brukerroller (admin / user)
+
+### TRINN 2 – Lesetilgang for brukere (user)
+Mål: Brukergrensesnitt for lesetilgang.
+*Adgang til DB bekreftet.
+En nettside for søk og lesing av fartøy (tblFartObj + tilhørende navn, spesifikasjoner og historikk)
+Standard søketemplates (definert i "Søksdefinisjoner.txt")
+Søkefelt og resultattabell
+Kun lesetilgang
+Ferdig testet
+
+### TRINN 3 – Utseende og justeringer
+Strukturering av siten
+Definisjon av søk
+Utseende landingsside
+CSS utvikling
+
+### TRINN 4 - Utseende generelt, nye krav til innhold
+Redefinisjon av søk
+Utseende alle sider
+CSS videreutvikling
+Nye linker

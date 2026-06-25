@@ -1,0 +1,16 @@
+Pakk tabellen i en egen wrap og bruk en “fit”-klasse for å overstyre standard tabellbredde:
+
+<div class="card centered-card">
+  <div class="card-content">
+
+    <div class="table-wrap center">
+      <table class="table fit">
+        <!-- thead / tbody -->
+      </table>
+    </div>
+
+  </div>
+</div>
+
+
+Grunnen til at vi trenger .fit, er at din globale .table setter width: 100% (da ser man ikke “midtstilling” fordi tabellen fyller hele bredden).

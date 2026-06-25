@@ -1,0 +1,4 @@
+SkipsWeb_PS v9.txt: Oppiser tillagt regneark for angivelse av feltstørrelse i noen spesifiserte forms.
+SkipsWeb_Schema v12.sql : Ny tabell tblzDrektEnh_ID.
+TblFartspes: FartKlasse fjernet, TonnEnh_ID har ny relasjon til tblzTonnEnh, DrektEnh_ID har ny relasjon til tblzDrektEnh
+rederi_sok.php:

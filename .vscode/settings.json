@@ -1,0 +1,10 @@
+{
+    "php.validate.executablePath": "C:/php/php.exe",
+    "terminal.integrated.defaultProfile.windows": "PowerShell",
+    "terminal.integrated.profiles.windows": {
+        "PowerShell": {
+            "source": "PowerShell",
+            "icon": "terminal-powershell"
+        }
+    }
+}
