@@ -29,9 +29,10 @@ if ($inAdmin) {
     $showLogin = false; // aldri vis Logg inn-lenke inne i admin-seksjonen
 }
 
-$homeHref   = BASE_URL . '/index.php';
-$loginHref  = BASE_URL . '/login.php';
-$logoutHref = BASE_URL . '/logout.php';
+$base       = rtrim(BASE_URL, '/');
+$homeHref   = $base . '/index.php';
+$loginHref  = $base . '/login.php';
+$logoutHref = $base . '/logout.php';
 ?>
 <div class="mdc-tab-bar" role="tablist" aria-label="Hovedmeny">
   <div class="mdc-tab-scroller">

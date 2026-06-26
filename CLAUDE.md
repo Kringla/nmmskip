@@ -282,6 +282,17 @@ echo json_encode(['success' => true, 'data' => $result], JSON_UNESCAPED_UNICODE)
 **Test etter deployment:** Kort beskrivelse av hva som bør verifiseres.
 ```
 
+### Filer som IKKE er i git og må finnes på serveren
+
+Disse filene inneholder miljøspesifikke innstillinger og passord. De er ikke i git og må alltid ligge på produksjonsserveren:
+
+| Fil | Innhold |
+|-----|---------|
+| `config/config.php` | DB-host, navn, bruker, passord |
+| `config/constants.php` | `define('BASE_URL', '/');` og `define('SKIPSWEB_THEME_V2', true);` |
+
+Ved nyinstallasjon: kopier `_basis/configLive.php` → `config/config.php` på serveren, og opprett `config/constants.php` manuelt.
+
 ### Retningslinjer:
 
 1. Liste alle endrede filer – bruk relative paths fra prosjektrot
@@ -313,5 +324,5 @@ echo json_encode(['success' => true, 'data' => $result], JSON_UNESCAPED_UNICODE)
 
 ---
 
-**Versjon:** 2.0
-**Sist oppdatert:** 2026-05-16
+**Versjon:** 2.1
+**Sist oppdatert:** 2026-06-26
