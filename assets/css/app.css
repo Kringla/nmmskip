@@ -291,8 +291,9 @@ h4 {
 .param-edit-row {
   display: flex;
   align-items: center;
-  flex-wrap: nowrap;
-  gap: .4rem;
+  flex-wrap: wrap;
+  gap: .5rem;
+  max-width: 100%;
 }
 .param-edit-row label {
   display: flex;
@@ -301,7 +302,7 @@ h4 {
   white-space: nowrap;
   font-size: .85rem;
 }
-.param-edit-row label input { width: 140px; }
+.param-edit-row label input { width: 140px; max-width: 100%; }
 
 .table.tight th,
 .table.tight td { padding: .25rem .5rem; border-bottom: 1px solid #00529b; }

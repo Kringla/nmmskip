@@ -39,9 +39,11 @@ $BASE = defined('BASE_URL') ? rtrim(BASE_URL, '/') : '';
     </section>
     <section class="mdc-top-app-bar__section mdc-top-app-bar__section--align-end site-header-auth">
       <?php if (!empty($_SESSION['user_id'])): ?>
-        <span class="site-header-auth__label">
-          <?= ($_SESSION['user_role'] ?? '') === 'admin' ? 'Admin' : 'Innlogget' ?>
-        </span>
+        <?php if (($_SESSION['user_role'] ?? '') === 'admin'): ?>
+          <a class="site-header-auth__btn" href="<?= $BASE ?>/admin/sw_admin.php">Admin</a>
+        <?php else: ?>
+          <span class="site-header-auth__label">Innlogget</span>
+        <?php endif; ?>
         <a class="mdc-button mdc-button--raised btn sw-audio-btn" href="<?= $BASE ?>/logout.php">
           <span class="mdc-button__ripple"></span>
           <span class="mdc-button__label">Logg ut</span>
